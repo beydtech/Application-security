@@ -54,3 +54,11 @@ Preventive Measures
 
 7. Regular Security Testing
    - Use tools like OWASP ZAP, Burp Suite, or sqlmap for vulnerability assessment.
+   
+   QUESTION 2
+
+Write a Python script that demonstrates a simple cross-site scripting (XSS) attack. 
+Provide a brief explanation of what cross-site scripting is and how it can be exploited. 
+Execute the script against a vulnerable web application (you can create a basic web 
+application for this purpose) and demonstrate the impact of the XSS attack. Explain the 
+countermeasures that can be implemented to mitigate XSS vulnerabilities. 
