@@ -1,4 +1,3 @@
-# APPLICATION SECURITY
 QUESTION:Research and explain the concept of SQL injection in the context of web application 
 security. Provide examples of how SQL injection attacks can be exploited and discuss the 
 potential consequences. Describe preventive measures that developers can implement to 
