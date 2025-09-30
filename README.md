@@ -1,14 +1,30 @@
-QUESTION:Research and explain the concept of SQL injection in the context of web application 
-security. Provide examples of how SQL injection attacks can be exploited and discuss the 
-potential consequences. Describe preventive measures that developers can implement to 
-protect against SQL injection vulnerabilities.
+QUESTION:Download OWSAP ZAP and perform a security scan on a website you have access to. 
+Explain the steps you followed to set up and configure ZAP for the scan. Provide a 
+detailed report highlighting any vulnerabilities or security issues identified during the 
+scan. 
 
 ANSWER;
  OWASP ZAP Scan Summary Report
 Target: OWASP Juice Shop (Localhost)
-Tool: OWASP ZAP
+OS Used: Kali Linux
+Tool: OWASP ZAP,run via Docker
 Scan Type: Automated Scan
+Launched Juice Shop locally (usually runs on http://localhost:3000).
+Entered the target URL in ZAP: http://localhost:3000
 Date: 29-09-2025
+
+Starting the Attack
+   -Selected the target site in ZAP’s “Sites” tab.
+   - Right-clicked the target → "Attack" → "Active Scan".
+   - Chose default scan settings and launched the scan.
+     
+Monitoring the Scan
+   - Watched alerts populate in real-time.
+   - Waited for the scan to complete (note: system crashed once during the scan, had to resume)
+     
+Exporting the Report
+   - After completion, exported the full scan report as an HTML/Markdown file (zap_scan_report.html).
+   - Also documented a summary of key vulnerabilities for reporting.
 
 📊Summary findings
 
@@ -63,55 +79,5 @@ NOTE: High Risk – needs urgent fixing
 
 - Use parameterized queries to eliminate SQL Injection.
 - Apply security headers (CSP, X-Frame-Options, X-Content-Type-Options).
-
-
-SQL Injection (SQLi) is a critical vulnerability that allows attackers to manipulate SQL queries by injecting malicious input through user-facing fields. If not handled properly, it can lead to data breaches, unauthorized access, or complete system compromise
-
-Exploitation Examples
-
-1. *Authentication Bypass*
-   sql
-   ' OR '1'='1
-   
-   Bypasses login forms by tricking the query into always evaluating as true.
-
-2. *Data Dumping*
-   sql
-   ' UNION SELECT username, password FROM users--
-   
-   Extracts data from other database tables by modifying the result set.
-
-3. *Database Destruction*
-   sql
-   '; DROP TABLE users;--
-   ```
-  Deletes critical database tables if executed.
-   
-  Consequences of SQL Injection
-
-- Data Theft – Unauthorized access to sensitive user or business data.
-- Data Loss or Corruption – Malicious users can delete or alter database contents.
-- Privilege Escalation – Gaining admin access through SQL-based manipulation.
-- Reputation Damage – Users may lose trust in the platform.
-
-Prevention Measures
-
-1. Parameterized Queries / Prepared Statements
-   - PHP (PDO):
-      
-2. Input Validation
-   - Ensure input matches expected patterns (e.g., no special characters in usernames).
-
-3. Use of ORMs
-   - Frameworks like Django ORM, Laravel Eloquent, or SQLAlchemy abstract raw queries.
-
-4. Stored Procedures
-   - Execute fixed SQL logic inside the database with parameter passing.
-
-5. Principle of Least Privilege
-   - Limit database user permissions to reduce impact if exploited.
-
-6. Web Application Firewall (WAF)
-   - Use WAFs to detect and block common SQLi payloads before reaching the app.
 
 
